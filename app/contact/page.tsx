@@ -3,28 +3,8 @@
 import type React from "react"
 
 import { useEffect, useRef, useState } from "react"
-import AboutUsSection from "../components/about-us-section"
-import AdmissionsContactSection from "../components/admissions-contact-section"
-import CampusFacilitiesSection from "../components/campus-facilities-section"
-import CoursesAndProgramsSection from "../components/courses-programs-section"
-import FacultyStaffSection from "../components/faculty-staff-section"
-import FooterSection from "../components/footer-section"
 
-// Reusable Badge Component
-function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="px-[14px] py-[6px] bg-card shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-border shadow-xs">
-      <div className="w-[14px] h-[14px] relative overflow-hidden flex items-center justify-center">{icon}</div>
-      <div className="text-center flex justify-center flex-col text-foreground text-xs font-medium leading-3 font-sans">
-        {text}
-      </div>
-    </div>
-  )
-}
-
-export default function LandingPage() {
-  const [activeCard, setActiveCard] = useState(0)
-  const [progress, setProgress] = useState(0)
+export default function ContactPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const mountedRef = useRef(true)
@@ -38,27 +18,6 @@ export default function LandingPage() {
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    const progressInterval = setInterval(() => {
-      if (!mountedRef.current) return
-
-      setProgress((prev) => {
-        if (prev >= 100) {
-          if (mountedRef.current) {
-            setActiveCard((current) => (current + 1) % 3)
-          }
-          return 0
-        }
-        return prev + 2
-      })
-    }, 100)
-
-    return () => {
-      clearInterval(progressInterval)
-      mountedRef.current = false
-    }
   }, [])
 
   useEffect(() => {
@@ -87,25 +46,6 @@ export default function LandingPage() {
       mountedRef.current = false
     }
   }, [])
-
-  const handleCardClick = (index: number) => {
-    if (!mountedRef.current) return
-    setActiveCard(index)
-    setProgress(0)
-  }
-
-  const getDashboardContent = () => {
-    switch (activeCard) {
-      case 0:
-        return <div className="text-muted-foreground text-sm">Campus Life - Student Activities & Community</div>
-      case 1:
-        return <div className="text-muted-foreground text-sm">Academic Excellence - Learning Outcomes</div>
-      case 2:
-        return <div className="text-muted-foreground text-sm">Career Success - Graduate Achievements</div>
-      default:
-        return <div className="text-muted-foreground text-sm">Campus Life - Student Activities & Community</div>
-    }
-  }
 
   return (
     <div className="w-full min-h-screen relative bg-background overflow-x-hidden flex flex-col justify-start items-center">
@@ -154,15 +94,15 @@ export default function LandingPage() {
                     <a href="/campus-life" className="text-muted-foreground hover:text-foreground text-xs md:text-[13px] font-medium leading-[14px] font-sans">
                       Campus Life
                     </a>
-                    <a href="/contact" className="text-muted-foreground hover:text-foreground text-xs md:text-[13px] font-medium leading-[14px] font-sans">
+                    <a href="/contact" className="text-foreground hover:text-foreground text-xs md:text-[13px] font-medium leading-[14px] font-sans">
                       Contact
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <a href="#login" className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full items-center text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
-                    Log in
+                  <a href="/" className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full items-center text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
+                    Back to Home
                   </a>
 
                   <button
@@ -180,7 +120,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Backdrop for mobile menu */}
+            {/* Mobile Menu */}
             <div
               className={`sm:hidden fixed inset-0 z-30 transition-opacity duration-300 ease-out ${
                 mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -190,7 +130,6 @@ export default function LandingPage() {
               style={{ background: "rgba(0,0,0,0.12)" }}
             />
 
-            {/* Floating mobile menu panel */}
             <div
               className={`sm:hidden absolute top-12 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-48px)] max-w-[380px] transition-all duration-300 ease-out ${
                 mobileMenuOpen
@@ -202,7 +141,6 @@ export default function LandingPage() {
               aria-label="Mobile navigation"
             >
               <div className="rounded-xl border border-border bg-card shadow-[0px_12px_32px_rgba(0,0,0,0.18)] overflow-hidden">
-                {/* Panel header */}
                 <div className="flex items-center justify-between px-4 py-3 border-b border-border/80 bg-card">
                   <div className="text-foreground text-sm font-semibold">Menu</div>
                   <button
@@ -217,7 +155,6 @@ export default function LandingPage() {
                   </button>
                 </div>
 
-                {/* Nav links */}
                 <nav role="menu" className="py-1">
                   <a
                     role="menuitem"
@@ -229,9 +166,6 @@ export default function LandingPage() {
                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                       Academics
                     </span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
-                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
                   </a>
                   <a
                     role="menuitem"
@@ -243,9 +177,6 @@ export default function LandingPage() {
                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                       Admissions
                     </span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
-                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
                   </a>
                   <a
                     role="menuitem"
@@ -257,9 +188,6 @@ export default function LandingPage() {
                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                       About Us
                     </span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
-                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
                   </a>
                   <a
                     role="menuitem"
@@ -271,9 +199,6 @@ export default function LandingPage() {
                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                       Campus Life
                     </span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
-                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
                   </a>
                   <a
                     role="menuitem"
@@ -285,177 +210,182 @@ export default function LandingPage() {
                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                       Contact
                     </span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
-                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
                   </a>
 
                   <div className="my-1 h-px bg-border" />
 
                   <a
                     role="menuitem"
-                    href="#login"
+                    href="/"
                     onClick={() => setMobileMenuOpen(false)}
                     className="mx-4 my-3 inline-flex items-center justify-center h-9 rounded-full border border-border px-4 text-sm font-medium text-foreground hover:bg-secondary/60 focus:bg-secondary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 transition"
                   >
-                    Log in
+                    Back to Home
                   </a>
                 </nav>
               </div>
             </div>
 
-            {/* Hero Section */}
+            {/* Page Content */}
             <div className="pt-12 sm:pt-16 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full sm:pl-0 sm:pr-0 pl-0 pr-0">
               <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
                   <div className="w-full max-w-[748.71px] lg:w-[748.71px] text-center flex justify-center flex-col text-foreground text-[24px] xs:text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-normal leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-2 sm:px-4 md:px-0">
-                    Excellence in Education
+                    Get in Touch
                     <br />
-                    at Data Center College
+                    With Us
                   </div>
                   <div className="w-full max-w-[506.08px] lg:w-[506.08px] text-center flex justify-center flex-col text-muted-foreground sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Prepare for the future with innovative programs
-                    <br className="hidden sm:block" />
-                    in technology, business, and professional development.
+                    We're here to help and answer any questions you may have about our programs, admissions, or campus life.
                   </div>
                 </div>
               </div>
 
-              <div className="w-full max-w-[497px] lg:w-[497px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 relative z-10 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
-                <div className="backdrop-blur-[8.25px] flex justify-start items-center gap-4">
-                  <div className="h-10 sm:h-11 md:h-12 px-6 sm:px-8 md:px-10 lg:px-12 py-2 sm:py-[6px] relative bg-foreground shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset] overflow-hidden rounded-full flex justify-center items-center">
-                    <div className="w-20 sm:w-24 md:w-28 lg:w-44 h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                    <div className="flex flex-col justify-center text-white text-sm sm:text-base md:text-[15px] font-medium leading-5 font-sans">
-                      Explore Programs
+              {/* Contact Content */}
+              <div className="w-full max-w-[960px] lg:w-[960px] pt-8 sm:pt-12 pb-6 sm:pb-8 md:pb-10 px-2 sm:px-4 md:px-6 lg:px-11 flex flex-col justify-center items-center gap-6 relative z-5 my-8 sm:my-12 md:my-16">
+                <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Contact Form */}
+                  <div className="bg-card p-8 rounded-lg border border-border">
+                    <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
+                    <form className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                        <input 
+                          type="text" 
+                          className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          placeholder="Enter your full name"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-2">Email Address</label>
+                        <input 
+                          type="email" 
+                          className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          placeholder="your.email@example.com"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-2">Subject</label>
+                        <input 
+                          type="text" 
+                          className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          placeholder="What is your message about?"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-2">Message</label>
+                        <textarea 
+                          className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-32 resize-none"
+                          placeholder="Type your message here..."
+                        />
+                      </div>
+                      <button 
+                        type="submit" 
+                        className="w-full bg-foreground text-white py-3 px-6 rounded-lg font-medium hover:bg-foreground/90 transition-colors"
+                      >
+                        Send Message
+                      </button>
+                    </form>
+                  </div>
+
+                  {/* Contact Information */}
+                  <div className="space-y-6">
+                    <div className="bg-card p-8 rounded-lg border border-border">
+                      <h2 className="text-2xl font-bold text-foreground mb-6">Contact Information</h2>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white flex-shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M12 11c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold text-foreground mb-1">Campus Address</h3>
+                            <p className="text-muted-foreground">
+                              123 Education Street<br />
+                              Baguio City, Philippines<br />
+                              2600
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white flex-shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold text-foreground mb-1">Phone Numbers</h3>
+                            <p className="text-muted-foreground">
+                              Main Office: (074) 123-4567<br />
+                              Admissions: (074) 123-4568<br />
+                              Fax: (074) 123-4569
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white flex-shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold text-foreground mb-1">Email Addresses</h3>
+                            <p className="text-muted-foreground">
+                              info@dccp.edu.ph<br />
+                              admissions@dccp.edu.ph<br />
+                              registrar@dccp.edu.ph
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white flex-shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                              <polyline points="12,6 12,12 16,14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold text-foreground mb-1">Office Hours</h3>
+                            <p className="text-muted-foreground">
+                              Monday - Friday: 8:00 AM - 6:00 PM<br />
+                              Saturday: 8:00 AM - 12:00 PM<br />
+                              Sunday: Closed
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
 
-              <div className="absolute top-[232px] sm:top-[248px] md:top-[264px] lg:top-[320px] left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
-                <img
-                  src="/mask-group-pattern.svg"
-                  alt=""
-                  className="w-[936px] sm:w-[1404px] md:w-[2106px] lg:w-[2808px] h-auto opacity-30 sm:opacity-40 md:opacity-50 mix-blend-multiply"
-                  style={{
-                    filter: "hue-rotate(15deg) saturate(0.7) brightness(1.2)",
-                  }}
-                />
-              </div>
-
-              <div className="w-full max-w-[960px] lg:w-[960px] pt-2 sm:pt-4 pb-6 sm:pb-8 md:pb-10 px-2 sm:px-4 md:px-6 lg:px-11 flex flex-col justify-center items-center gap-2 relative z-5 my-8 sm:my-12 md:my-16 lg:my-16 mb-0 lg:pb-0">
-                <div className="w-full max-w-[960px] lg:w-[960px] h-[200px] sm:h-[280px] md:h-[450px] lg:h-[695.55px] bg-white shadow-[0px_0px_0px_0.9056603908538818px_rgba(0,0,0,0.08)] overflow-hidden rounded-[6px] sm:rounded-[8px] lg:rounded-[9.06px] flex flex-col justify-start items-start">
-                  {/* Dashboard Content */}
-                  <div className="self-stretch flex-1 flex justify-start items-start">
-                    {/* Main Content */}
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="relative w-full h-full overflow-hidden">
-                        {/* Campus Life Image */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                            activeCard === 0 ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-95 blur-sm"
-                          }`}
-                        >
-                          <img
-                            src="/college-campus-students-studying-together-in-moder.jpg"
-                            alt="Campus Life - Students collaborating in modern facilities"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Academic Excellence Image */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                            activeCard === 1 ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-95 blur-sm"
-                          }`}
-                        >
-                          <img
-                            src="/professional-classroom-with-technology-and-interac.jpg"
-                            alt="Academic Excellence - Modern classroom with technology"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Career Success Image */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                            activeCard === 2 ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-95 blur-sm"
-                          }`}
-                        >
-                          <img
-                            src="/graduates-in-professional-setting-career-success-a.jpg"
-                            alt="Career Success - Graduates in professional environment"
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
+                    <div className="bg-card p-6 rounded-lg border border-border">
+                      <h3 className="text-lg font-semibold text-foreground mb-4">Follow Us</h3>
+                      <div className="flex gap-4">
+                        <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition-colors">
+                          <span className="text-sm font-bold">f</span>
+                        </a>
+                        <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition-colors">
+                          <span className="text-sm font-bold">t</span>
+                        </a>
+                        <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition-colors">
+                          <span className="text-sm font-bold">in</span>
+                        </a>
+                        <a href="#" className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition-colors">
+                          <span className="text-sm font-bold">ig</span>
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* About Us Section */}
-              <AboutUsSection />
-
-              {/* Courses & Programs Section */}
-              <CoursesAndProgramsSection />
-
-              {/* Campus Facilities Section */}
-              <CampusFacilitiesSection />
-
-              {/* Faculty & Staff Section */}
-              <FacultyStaffSection />
-
-              {/* Admissions & Contact Section */}
-              <AdmissionsContactSection />
-
-              {/* Footer Section */}
-              <FooterSection />
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
-
-// FeatureCard component definition inline to fix import error
-function FeatureCard({
-  title,
-  description,
-  isActive,
-  progress,
-  onClick,
-}: {
-  title: string
-  description: string
-  isActive: boolean
-  progress: number
-  onClick: () => void
-}) {
-  return (
-    <div
-      className={`w-full md:flex-1 self-stretch px-6 py-5 overflow-hidden flex flex-col justify-start items-start gap-2 cursor-pointer relative border-b md:border-b-0 last:border-b-0 ${
-        isActive
-          ? "bg-white shadow-[0px_0px_0px_0.75px_#E0DEDB_inset]"
-          : "border-l-0 border-r-0 md:border border-border/80"
-      }`}
-      onClick={onClick}
-    >
-      {isActive && (
-        <div className="absolute top-0 left-0 w-full h-0.5 bg-secondary/50">
-          <div
-            className="h-full bg-foreground transition-all duration-100 ease-linear"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      )}
-
-      <div className="self-stretch flex justify-center flex-col text-foreground text-sm md:text-sm font-semibold leading-6 md:leading-6 font-sans">
-        {title}
-      </div>
-      <div className="self-stretch text-muted-foreground text-[13px] md:text-[13px] font-normal leading-[22px] md:leading-[22px] font-sans">
-        {description}
       </div>
     </div>
   )
