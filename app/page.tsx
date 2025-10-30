@@ -2,13 +2,13 @@
 
 import type React from "react"
 
-import { useState, useEffect, useRef } from "react"
-import FooterSection from "../components/footer-section"
+import { useEffect, useRef, useState } from "react"
 import AboutUsSection from "../components/about-us-section"
-import CoursesAndProgramsSection from "../components/courses-programs-section"
-import CampusFacilitiesSection from "../components/campus-facilities-section"
-import FacultyStaffSection from "../components/faculty-staff-section"
 import AdmissionsContactSection from "../components/admissions-contact-section"
+import CampusFacilitiesSection from "../components/campus-facilities-section"
+import CoursesAndProgramsSection from "../components/courses-programs-section"
+import FacultyStaffSection from "../components/faculty-staff-section"
+import FooterSection from "../components/footer-section"
 
 // Reusable Badge Component
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -68,9 +68,17 @@ export default function LandingPage() {
       }
     }
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false)
+    }
+
     if (mobileMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside)
-      return () => document.removeEventListener("mousedown", handleClickOutside)
+      document.addEventListener("keydown", handleKeyDown)
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside)
+        document.removeEventListener("keydown", handleKeyDown)
+      }
     }
   }, [mobileMenuOpen])
 
@@ -108,160 +116,142 @@ export default function LandingPage() {
           <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-border shadow-[1px_0px_0px_white] z-0"></div>
 
           <div className="self-stretch pt-[9px] overflow-visible border-b border-border flex flex-col justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-[66px] relative z-10">
-            <div
-              ref={navContainerRef}
-              className={`w-full flex flex-col justify-center items-center z-40 px-4 sm:px-6 md:px-8 lg:px-0 transition-all duration-300 ease-out ${
-                isScrolled
-                  ? "fixed top-0 left-0 right-0 py-3 sm:py-4 md:py-3 bg-background/95 backdrop-blur-md border-b border-border shadow-md"
-                  : "relative py-3 sm:py-4 md:py-0"
-              }`}
-            >
-              <div
-                className={`w-full transition-all duration-300 ease-out ${
-                  isScrolled
-                    ? "max-w-full px-4 sm:px-6 md:px-8"
-                    : "max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[700px] lg:w-[700px]"
-                }`}
-              >
-                <div
-                  className={`py-2 sm:py-3 md:py-3 px-4 sm:px-5 md:px-5 bg-card backdrop-blur-md shadow-[0px_2px_8px_rgba(55,50,47,0.08)] overflow-visible transition-all duration-300 ease-out border border-border flex flex-col justify-between items-center relative z-30 ${
-                    isScrolled ? "rounded-lg" : "rounded-full"
-                  }`}
-                >
-                  {/* Navigation Content */}
-                  <div className="w-full flex justify-between items-center">
-                    {/* Logo Section with hover animation */}
-                    <div className="flex justify-center items-center gap-2 group cursor-pointer transition-transform duration-300 hover:scale-105">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow duration-300">
-                        <span className="text-white text-xs sm:text-sm md:text-base font-bold">DC</span>
-                      </div>
-                      <div className="hidden sm:flex flex-col justify-center transition-opacity duration-300">
-                        <div className="text-foreground text-xs sm:text-sm md:text-base font-bold leading-4 font-sans">
-                          DCCPH
-                        </div>
-                        <div className="text-muted-foreground text-[10px] sm:text-[11px] md:text-xs leading-2 font-sans">
-                          Baguio City
-                        </div>
-                      </div>
-                    </div>
+            <div ref={navContainerRef} className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] absolute left-0 top-0 flex justify-center items-center z-20 px-6 sm:px-8 md:px-12 lg:px-0">
+              <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
 
-                    {/* Desktop Navigation with enhanced transitions */}
-                    <div className="hidden md:flex justify-start items-center gap-6 lg:gap-8 flex-1 ml-6 lg:ml-8">
-                      <a
-                        href="#programs"
-                        className="text-muted-foreground text-sm font-medium hover:text-foreground transition-all duration-300 ease-out relative group"
-                      >
-                        Programs
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/80 group-hover:w-full transition-all duration-300 ease-out"></span>
-                      </a>
-                      <a
-                        href="#about"
-                        className="text-muted-foreground text-sm font-medium hover:text-foreground transition-all duration-300 ease-out relative group"
-                      >
-                        About
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/80 group-hover:w-full transition-all duration-300 ease-out"></span>
-                      </a>
-                      <a
-                        href="#campuses"
-                        className="text-muted-foreground text-sm font-medium hover:text-foreground transition-all duration-300 ease-out relative group"
-                      >
-                        Campuses
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/80 group-hover:w-full transition-all duration-300 ease-out"></span>
-                      </a>
-                      <a
-                        href="#contact"
-                        className="text-muted-foreground text-sm font-medium hover:text-foreground transition-all duration-300 ease-out relative group"
-                      >
-                        Contact
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/80 group-hover:w-full transition-all duration-300 ease-out"></span>
-                      </a>
-                    </div>
-
-                    {/* Mobile Menu Button with smooth animation */}
-                    <button
-                      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                      className="md:hidden flex flex-col justify-center items-center gap-1.5 ml-auto p-2 hover:bg-secondary/50 rounded-lg transition-all duration-300 ease-out relative z-50"
-                      aria-label="Toggle menu"
-                      aria-expanded={mobileMenuOpen}
-                    >
-                      <div
-                        className={`w-5 h-0.5 bg-foreground transition-all duration-300 ease-out origin-center ${
-                          mobileMenuOpen ? "rotate-45 translate-y-2" : ""
-                        }`}
-                      ></div>
-                      <div
-                        className={`w-5 h-0.5 bg-foreground transition-all duration-300 ease-out ${
-                          mobileMenuOpen ? "opacity-0 scale-0" : "opacity-100 scale-100"
-                        }`}
-                      ></div>
-                      <div
-                        className={`w-5 h-0.5 bg-foreground transition-all duration-300 ease-out origin-center ${
-                          mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-                        }`}
-                      ></div>
-                    </button>
-
-                    {/* Apply Now Button with enhanced styling */}
-                    <div className="hidden md:flex h-8 md:h-9 ml-4 md:ml-6">
-                      <div className="px-4 md:px-5 py-1.5 md:py-2 bg-gradient-to-r from-primary to-primary/90 text-white shadow-[0px_2px_8px_rgba(37,99,235,0.3)] overflow-hidden rounded-full flex justify-center items-center cursor-pointer hover:shadow-[0px_4px_12px_rgba(37,99,235,0.4)] hover:scale-105 transition-all duration-300 ease-out">
-                        <div className="flex flex-col justify-center text-white text-xs md:text-sm font-semibold leading-5 font-sans">
-                          Apply Now
-                        </div>
-                      </div>
-                    </div>
+              <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[700px] lg:w-[700px] h-10 sm:h-11 md:h-12 py-1.5 sm:py-2 px-3 sm:px-4 md:px-4 pr-2 sm:pr-3 bg-card backdrop-blur-sm shadow-[0px_0px_0px_2px_white] overflow-visible rounded-[50px] flex justify-between items-center relative z-30 border border-border">
+                <div className="flex items-center gap-3">
+                  <div className="flex flex-col justify-center text-foreground text-sm sm:text-base md:text-lg lg:text-xl font-medium leading-5 font-sans">
+                    Brillance
+                  </div>
+                  <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 hidden sm:flex items-center gap-3 sm:gap-3 md:gap-4 lg:gap-4">
+                    <a href="#products" className="text-muted-foreground hover:text-foreground text-xs md:text-[13px] font-medium leading-[14px] font-sans">
+                      Products
+                    </a>
+                    <a href="#pricing" className="text-muted-foreground hover:text-foreground text-xs md:text-[13px] font-medium leading-[14px] font-sans">
+                      Pricing
+                    </a>
+                    <a href="#docs" className="text-muted-foreground hover:text-foreground text-xs md:text-[13px] font-medium leading-[14px] font-sans">
+                      Docs
+                    </a>
                   </div>
                 </div>
 
-                {mobileMenuOpen && (
-                  <div className="w-full mt-0 bg-card border border-t-0 border-border rounded-b-lg overflow-hidden transition-all duration-300 ease-out origin-top md:hidden">
-                    <div className="flex flex-col divide-y divide-border">
-                      {/* Dropdown Navigation Links */}
-                      <a
-                        href="#programs"
-                        className="px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary/50 transition-all duration-200 ease-out flex items-center gap-3 group"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform duration-300"></span>
-                        Programs
-                      </a>
-                      <a
-                        href="#about"
-                        className="px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary/50 transition-all duration-200 ease-out flex items-center gap-3 group"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform duration-300"></span>
-                        About
-                      </a>
-                      <a
-                        href="#campuses"
-                        className="px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary/50 transition-all duration-200 ease-out flex items-center gap-3 group"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform duration-300"></span>
-                        Campuses
-                      </a>
-                      <a
-                        href="#contact"
-                        className="px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary/50 transition-all duration-200 ease-out flex items-center gap-3 group"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform duration-300"></span>
-                        Contact
-                      </a>
+                <div className="flex items-center gap-2">
+                  <a href="#login" className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full items-center text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
+                    Log in
+                  </a>
 
-                      {/* Dropdown CTA Button */}
-                      <div className="px-4 py-3 bg-secondary/30">
-                        <div className="w-full px-4 py-2.5 bg-gradient-to-r from-primary to-primary/90 text-white text-sm font-semibold rounded-full text-center cursor-pointer hover:shadow-[0px_4px_12px_rgba(37,99,235,0.3)] active:scale-95 transition-all duration-300 ease-out">
-                          Apply Now
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                  <button
+                    aria-label="Toggle menu"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className="sm:hidden h-8 w-8 inline-flex items-center justify-center rounded-full border border-border text-foreground hover:bg-secondary/60 active:scale-95 transition"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 6H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M4 12H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div className={isScrolled ? "h-16 sm:h-20 md:h-16" : ""}></div>
+            {/* Backdrop for mobile menu */}
+            <div
+              className={`sm:hidden fixed inset-0 z-30 transition-opacity duration-300 ease-out ${
+                mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+              style={{ background: "rgba(0,0,0,0.12)" }}
+            />
+
+            {/* Floating mobile menu panel */}
+            <div
+              className={`sm:hidden absolute top-12 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-48px)] max-w-[380px] transition-all duration-300 ease-out ${
+                mobileMenuOpen
+                  ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+                  : "opacity-0 -translate-y-2 scale-[0.98] pointer-events-none"
+              }`}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation"
+            >
+              <div className="rounded-xl border border-border bg-card shadow-[0px_12px_32px_rgba(0,0,0,0.18)] overflow-hidden">
+                {/* Panel header */}
+                <div className="flex items-center justify-between px-4 py-3 border-b border-border/80 bg-card">
+                  <div className="text-foreground text-sm font-semibold">Menu</div>
+                  <button
+                    aria-label="Close menu"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="h-8 w-8 inline-flex items-center justify-center rounded-md hover:bg-secondary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 transition"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Nav links */}
+                <nav role="menu" className="py-1">
+                  <a
+                    role="menuitem"
+                    href="#products"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between gap-3 px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary/60 focus:bg-secondary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 transition"
+                  >
+                    <span className="inline-flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                      Products
+                    </span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                  <a
+                    role="menuitem"
+                    href="#pricing"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between gap-3 px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary/60 focus:bg-secondary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 transition"
+                  >
+                    <span className="inline-flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                      Pricing
+                    </span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                  <a
+                    role="menuitem"
+                    href="#docs"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between gap-3 px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary/60 focus:bg-secondary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 transition"
+                  >
+                    <span className="inline-flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                      Docs
+                    </span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+
+                  <div className="my-1 h-px bg-border" />
+
+                  <a
+                    role="menuitem"
+                    href="#login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="mx-4 my-3 inline-flex items-center justify-center h-9 rounded-full border border-border px-4 text-sm font-medium text-foreground hover:bg-secondary/60 focus:bg-secondary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 transition"
+                  >
+                    Log in
+                  </a>
+                </nav>
+              </div>
+            </div>
 
             {/* Hero Section */}
             <div className="pt-12 sm:pt-16 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full sm:pl-0 sm:pr-0 pl-0 pr-0">
