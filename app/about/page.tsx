@@ -215,9 +215,9 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="pt-12 sm:pt-16 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full">
+            <div className="pt-12 sm:pt-16 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-0 sm:px-0 md:px-0 lg:px-0 w-full">
               {/* Hero Section */}
-              <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 sm:mb-16 md:mb-20">
+              <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 sm:mb-16 md:mb-20 px-2 sm:px-4 md:px-8 lg:px-0">
                 <div className="flex flex-col justify-center items-center gap-6 sm:gap-7 md:gap-8 lg:gap-10 w-full">
                   <h1 className="text-[32px] xs:text-[40px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-serif font-normal text-foreground leading-[1.1] text-balance text-center px-2">
                     About <span className="font-bold">Data Center College</span>
@@ -230,7 +230,7 @@ export default function AboutPage() {
               </div>
 
               {/* Two-Column Content Section */}
-              <div className="w-full max-w-[937px] lg:w-[937px] space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28">
+              <div className="w-full max-w-[937px] lg:w-[937px] space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28 px-2 sm:px-4 md:px-8 lg:px-0">
                 {/* Mission Section */}
                 <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
                   <div className="flex flex-col gap-4">

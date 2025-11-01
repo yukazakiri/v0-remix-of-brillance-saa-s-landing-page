@@ -299,9 +299,9 @@ export default function AcademicsPage() {
             </div>
 
             {/* Page Content */}
-            <div className="pt-12 sm:pt-16 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full pl-0 pr-0">
+            <div className="pt-12 sm:pt-16 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-0 sm:px-0 md:px-0 lg:px-0 w-full">
               {/* Hero Section */}
-              <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10">
+              <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 px-2 sm:px-4 md:px-8 lg:px-0">
                 <div className="flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6">
                   <div className="text-center">
                     <h1 className="text-foreground text-[32px] sm:text-[48px] md:text-[64px] lg:text-[72px] font-normal leading-tight sm:leading-tight md:leading-tight lg:leading-tight font-serif mb-3 sm:mb-4">
@@ -316,7 +316,7 @@ export default function AcademicsPage() {
               </div>
 
               {/* Filter Section */}
-              <div className="w-full max-w-[960px] lg:w-[960px] mt-12 sm:mt-16 md:mt-20">
+              <div className="w-full max-w-[960px] lg:w-[960px] mt-12 sm:mt-16 md:mt-20 px-2 sm:px-4 md:px-8 lg:px-0">
                 <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                   <button
                     onClick={() => setActiveFilter("all")}
@@ -352,7 +352,7 @@ export default function AcademicsPage() {
               </div>
 
               {/* Featured Programs */}
-              <div className="w-full max-w-[960px] lg:w-[960px] mt-16 sm:mt-20 md:mt-24">
+              <div className="w-full max-w-[960px] lg:w-[960px] mt-16 sm:mt-20 md:mt-24 px-2 sm:px-4 md:px-8 lg:px-0">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal font-serif text-foreground mb-8 sm:mb-10">
                   Featured Programs
                 </h2>
@@ -391,7 +391,7 @@ export default function AcademicsPage() {
               </div>
 
               {/* All Programs Grid */}
-              <div className="w-full max-w-[960px] lg:w-[960px] mt-16 sm:mt-20 md:mt-24">
+              <div className="w-full max-w-[960px] lg:w-[960px] mt-16 sm:mt-20 md:mt-24 px-2 sm:px-4 md:px-8 lg:px-0">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal font-serif text-foreground mb-8 sm:mb-10">
                   All Programs
                 </h2>
@@ -426,7 +426,7 @@ export default function AcademicsPage() {
               </div>
 
               {/* Support Services */}
-              <div className="w-full max-w-[960px] lg:w-[960px] mt-16 sm:mt-20 md:mt-24 mb-16 sm:mb-20 md:mb-24">
+              <div className="w-full max-w-[960px] lg:w-[960px] mt-16 sm:mt-20 md:mt-24 mb-16 sm:mb-20 md:mb-24 px-2 sm:px-4 md:px-8 lg:px-0">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal font-serif text-foreground mb-12 sm:mb-14 text-center">
                   Academic Support
                 </h2>
