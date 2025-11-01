@@ -215,163 +215,176 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="pt-12 sm:pt-16 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-0 sm:px-0 md:px-0 lg:px-0 w-full">
-              {/* Hero Section */}
-              <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 sm:mb-16 md:mb-20 px-2 sm:px-4 md:px-8 lg:px-0">
-                <div className="flex flex-col justify-center items-center gap-6 sm:gap-7 md:gap-8 lg:gap-10 w-full">
-                  <h1 className="text-[32px] xs:text-[40px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-serif font-normal text-foreground leading-[1.1] text-balance text-center px-2">
-                    About <span className="font-bold">Data Center College</span>
-                  </h1>
-                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-sans text-muted-foreground text-balance text-center leading-relaxed max-w-[700px]">
-                    A premier educational institution committed to excellence, innovation, and holistic student
-                    development since our founding.
-                  </p>
-                </div>
-              </div>
-
-              {/* Two-Column Content Section */}
-              <div className="w-full max-w-[937px] lg:w-[937px] space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28 px-2 sm:px-4 md:px-8 lg:px-0">
-                {/* Mission Section */}
-                <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
-                  <div className="flex flex-col gap-4">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
-                      Our Mission
-                    </h2>
-                    <div className="w-12 h-1 bg-primary rounded-full"></div>
-                  </div>
-                  <div className="text-base sm:text-lg text-muted-foreground leading-relaxed space-y-4 md:pt-2">
-                    <p>
-                      Data Center College of the Philippines is dedicated to providing quality education that fosters
-                      academic excellence, critical thinking, and moral integrity.
-                    </p>
-                    <p>
-                      We aim to develop competent professionals who contribute positively to society and the global
-                      community through innovative teaching methods and industry-relevant programs.
-                    </p>
-                  </div>
-                </section>
-
-                {/* Vision Section */}
-                <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
-                  <div className="flex flex-col gap-4 md:order-2">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
-                      Our Vision
-                    </h2>
-                    <div className="w-12 h-1 bg-primary rounded-full"></div>
-                  </div>
-                  <div className="text-base sm:text-lg text-muted-foreground leading-relaxed space-y-4 md:pt-2 md:order-1">
-                    <p>
-                      To be a leading educational institution recognized for producing graduates who excel in their
-                      chosen fields, demonstrate leadership, and uphold ethical values.
-                    </p>
-                    <p>
-                      We strive to create an inclusive learning environment that embraces diversity, promotes research,
-                      and adapts to the evolving demands of the modern workforce.
-                    </p>
-                  </div>
-                </section>
-
-                {/* Core Values Section */}
-                <section className="space-y-8 sm:space-y-10">
-                  <div className="flex flex-col gap-4">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
-                      Core Values
-                    </h2>
-                    <div className="w-12 h-1 bg-primary rounded-full"></div>
+            <div className="pt-12 sm:pt-16 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full">
+              <div className="w-full flex flex-col justify-start items-center">
+                <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+                  {/* Hero Section */}
+                  <div className="w-full flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 sm:mb-16 md:mb-20">
+                    <div className="flex flex-col justify-center items-center gap-6 sm:gap-7 md:gap-8 lg:gap-10 w-full">
+                      <h1 className="text-[32px] xs:text-[40px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-serif font-normal text-foreground leading-[1.1] text-balance text-center px-2">
+                        About <span className="font-bold">Data Center College</span>
+                      </h1>
+                      <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-sans text-muted-foreground text-balance text-center leading-relaxed max-w-[700px]">
+                        A premier educational institution committed to excellence, innovation, and holistic student
+                        development since our founding.
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
-                    {[
-                      {
-                        title: "Excellence",
-                        description:
-                          "We pursue the highest standards in education, research, and service with unwavering commitment.",
-                      },
-                      {
-                        title: "Integrity",
-                        description: "We uphold honesty, ethics, and transparency in all our actions and decisions.",
-                      },
-                      {
-                        title: "Innovation",
-                        description:
-                          "We embrace creativity and adapt to changing educational landscapes and societal needs.",
-                      },
-                      {
-                        title: "Community",
-                        description: "We foster collaboration and social responsibility among all stakeholders.",
-                      },
-                    ].map((value, index) => (
-                      <div key={index} className="space-y-3">
-                        <h3 className="text-lg sm:text-xl font-semibold text-foreground font-sans">{value.title}</h3>
-                        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                          {value.description}
+                  {/* Two-Column Content Section */}
+                  <div className="w-full space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28">
+                    {/* Mission Section */}
+                    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
+                      <div className="flex flex-col gap-4">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
+                          Our Mission
+                        </h2>
+                        <div className="w-12 h-1 bg-primary rounded-full"></div>
+                      </div>
+                      <div className="text-base sm:text-lg text-muted-foreground leading-relaxed space-y-4 md:pt-2">
+                        <p>
+                          Data Center College of the Philippines is dedicated to providing quality education that
+                          fosters academic excellence, critical thinking, and moral integrity.
+                        </p>
+                        <p>
+                          We aim to develop competent professionals who contribute positively to society and the global
+                          community through innovative teaching methods and industry-relevant programs.
                         </p>
                       </div>
-                    ))}
-                  </div>
-                </section>
+                    </section>
 
-                {/* Statistics Section */}
-                <section className="space-y-8 sm:space-y-10">
-                  <div className="flex flex-col gap-4">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
-                      By the Numbers
-                    </h2>
-                    <div className="w-12 h-1 bg-primary rounded-full"></div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-                    {[
-                      {
-                        stat: "5000+",
-                        label: "Students",
-                        description: "A diverse community of learners from around the region",
-                      },
-                      {
-                        stat: "50+",
-                        label: "Programs",
-                        description: "Comprehensive academic offerings across disciplines",
-                      },
-                      { stat: "95%", label: "Employment", description: "Graduates successfully placed in their field" },
-                    ].map((item, index) => (
-                      <div key={index} className="flex flex-col gap-4">
-                        <div className="flex flex-col gap-2">
-                          <div className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-primary">
-                            {item.stat}
-                          </div>
-                          <p className="text-base sm:text-lg font-semibold text-foreground font-sans">{item.label}</p>
-                        </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                    {/* Vision Section */}
+                    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
+                      <div className="flex flex-col gap-4 md:order-2">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
+                          Our Vision
+                        </h2>
+                        <div className="w-12 h-1 bg-primary rounded-full"></div>
                       </div>
-                    ))}
-                  </div>
-                </section>
+                      <div className="text-base sm:text-lg text-muted-foreground leading-relaxed space-y-4 md:pt-2 md:order-1">
+                        <p>
+                          To be a leading educational institution recognized for producing graduates who excel in their
+                          chosen fields, demonstrate leadership, and uphold ethical values.
+                        </p>
+                        <p>
+                          We strive to create an inclusive learning environment that embraces diversity, promotes
+                          research, and adapts to the evolving demands of the modern workforce.
+                        </p>
+                      </div>
+                    </section>
 
-                {/* CTA Section */}
-                <section className="bg-primary text-primary-foreground rounded-lg sm:rounded-xl md:rounded-2xl p-8 sm:p-10 md:p-12 space-y-6">
-                  <div className="space-y-3">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold leading-tight">
-                      Interested in Joining Us?
-                    </h2>
-                    <p className="text-base sm:text-lg font-sans opacity-90 leading-relaxed">
-                      Discover how Data Center College can help you achieve your academic and professional goals.
-                    </p>
+                    {/* Core Values Section */}
+                    <section className="space-y-8 sm:space-y-10">
+                      <div className="flex flex-col gap-4">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
+                          Core Values
+                        </h2>
+                        <div className="w-12 h-1 bg-primary rounded-full"></div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
+                        {[
+                          {
+                            title: "Excellence",
+                            description:
+                              "We pursue the highest standards in education, research, and service with unwavering commitment.",
+                          },
+                          {
+                            title: "Integrity",
+                            description:
+                              "We uphold honesty, ethics, and transparency in all our actions and decisions.",
+                          },
+                          {
+                            title: "Innovation",
+                            description:
+                              "We embrace creativity and adapt to changing educational landscapes and societal needs.",
+                          },
+                          {
+                            title: "Community",
+                            description: "We foster collaboration and social responsibility among all stakeholders.",
+                          },
+                        ].map((value, index) => (
+                          <div key={index} className="space-y-3">
+                            <h3 className="text-lg sm:text-xl font-semibold text-foreground font-sans">
+                              {value.title}
+                            </h3>
+                            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                              {value.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    {/* Statistics Section */}
+                    <section className="space-y-8 sm:space-y-10">
+                      <div className="flex flex-col gap-4">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">
+                          By the Numbers
+                        </h2>
+                        <div className="w-12 h-1 bg-primary rounded-full"></div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+                        {[
+                          {
+                            stat: "5000+",
+                            label: "Students",
+                            description: "A diverse community of learners from around the region",
+                          },
+                          {
+                            stat: "50+",
+                            label: "Programs",
+                            description: "Comprehensive academic offerings across disciplines",
+                          },
+                          {
+                            stat: "95%",
+                            label: "Employment",
+                            description: "Graduates successfully placed in their field",
+                          },
+                        ].map((item, index) => (
+                          <div key={index} className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-2">
+                              <div className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-primary">
+                                {item.stat}
+                              </div>
+                              <p className="text-base sm:text-lg font-semibold text-foreground font-sans">
+                                {item.label}
+                              </p>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    {/* CTA Section */}
+                    <section className="bg-primary text-primary-foreground rounded-lg sm:rounded-xl md:rounded-2xl p-8 sm:p-10 md:p-12 space-y-6">
+                      <div className="space-y-3">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold leading-tight">
+                          Interested in Joining Us?
+                        </h2>
+                        <p className="text-base sm:text-lg font-sans opacity-90 leading-relaxed">
+                          Discover how Data Center College can help you achieve your academic and professional goals.
+                        </p>
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <a
+                          href="/academics"
+                          className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-primary font-semibold rounded-lg hover:bg-primary-foreground transition-colors"
+                        >
+                          Explore Programs
+                        </a>
+                        <a
+                          href="/contact"
+                          className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary-foreground text-primary-foreground font-semibold rounded-lg hover:bg-primary-foreground/10 transition-colors"
+                        >
+                          Get in Touch
+                        </a>
+                      </div>
+                    </section>
                   </div>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a
-                      href="/academics"
-                      className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-primary font-semibold rounded-lg hover:bg-primary-foreground transition-colors"
-                    >
-                      Explore Programs
-                    </a>
-                    <a
-                      href="/contact"
-                      className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary-foreground text-primary-foreground font-semibold rounded-lg hover:bg-primary-foreground/10 transition-colors"
-                    >
-                      Get in Touch
-                    </a>
-                  </div>
-                </section>
+                </div>
               </div>
             </div>
           </div>
