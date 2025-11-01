@@ -140,7 +140,7 @@ export default function CampusLifePage() {
               aria-modal="true"
               aria-label="Mobile navigation"
             >
-              <div className="rounded-xl border border-border bg-card shadow-[0px_12px_32px_rgba(0,0,0,0.18)] overflow-hidden">
+              <div className="border border-border bg-card shadow-[0px_12px_32px_rgba(0,0,0,0.18)] overflow-hidden rounded-2xl">
                 <div className="flex items-center justify-between px-4 py-3 border-b border-border/80 bg-card">
                   <div className="text-foreground text-sm font-semibold">Menu</div>
                   <button
