@@ -255,7 +255,7 @@ export default function AcademicsPage() {
                 <div className="w-full mb-12">
                   <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Featured Programs</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 rounded-lg border border-primary/20">
+                    <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 border border-primary/20 rounded-xl">
                       <div className="flex items-start justify-between mb-4">
                         <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +275,7 @@ export default function AcademicsPage() {
                       <button className="w-full py-2 bg-foreground text-white rounded-lg font-medium hover:bg-foreground/90 transition">Learn More</button>
                     </div>
 
-                    <div className="bg-gradient-to-br from-secondary/10 to-secondary/5 p-8 rounded-lg border border-secondary/20">
+                    <div className="bg-gradient-to-br from-secondary/10 to-secondary/5 p-8 border border-secondary/20 rounded-xl">
                       <div className="flex items-start justify-between mb-4">
                         <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-white">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
